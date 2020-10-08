@@ -66,7 +66,7 @@ func AssertProtobufEqual(t *testing.T, expected, actual proto.Message) {
 	es := expected.String()
 	as := actual.String()
 	if es != as {
-		t.Fatalf("Wrong block: expected '%s' , instead got '%s'", es, as)
+		t.Fatalf("Wrong protobuf: expected '%s' , instead got '%s'", es, as)
 	}
 }
 
