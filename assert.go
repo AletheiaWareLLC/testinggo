@@ -17,10 +17,10 @@
 package testinggo
 
 import (
+	"aletheiaware.com/cryptogo"
 	"bytes"
 	"crypto/rsa"
 	"encoding/base64"
-	"github.com/AletheiaWareLLC/cryptogo"
 	"github.com/golang/protobuf/proto"
 	"regexp"
 	"testing"
