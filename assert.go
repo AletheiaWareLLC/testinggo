@@ -57,7 +57,7 @@ func AssertMatchesError(t *testing.T, expected string, err error) {
 func AssertHashEqual(t *testing.T, expected, actual []byte) {
 	t.Helper()
 	if !bytes.Equal(expected, actual) {
-		t.Fatalf("Wrong hash: expected '%s' , instead got '%s'", base64.RawURLEncoding.EncodeToString(expected), base64.RawURLEncoding.EncodeToString(actual))
+		t.Fatalf("Wrong hash: expected '%s', instead got '%s'", base64.RawURLEncoding.EncodeToString(expected), base64.RawURLEncoding.EncodeToString(actual))
 	}
 }
 
@@ -66,7 +66,7 @@ func AssertProtobufEqual(t *testing.T, expected, actual proto.Message) {
 	es := expected.String()
 	as := actual.String()
 	if es != as {
-		t.Fatalf("Wrong protobuf: expected '%s' , instead got '%s'", es, as)
+		t.Fatalf("Wrong protobuf: expected '%s', instead got '%s'", es, as)
 	}
 }
 
