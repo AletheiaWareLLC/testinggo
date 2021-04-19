@@ -21,25 +21,25 @@ import (
 	"testing"
 )
 
-func MakeEnv(t *testing.T, env, value string) {
+func SetEnv(t *testing.T, env, value string) {
 	t.Helper()
 	os.Setenv(env, value)
 }
 
-func UnmakeEnv(t *testing.T, env string) {
+func UnsetEnv(t *testing.T, env string) {
 	t.Helper()
 	os.Unsetenv(env)
 }
 
-func MakeEnvTempDir(t *testing.T, env, dir string) string {
+func SetEnvTempDir(t *testing.T, env, dir string) string {
 	t.Helper()
 	d := MakeTempDir(t, dir)
-	MakeEnv(t, env, d)
+	SetEnv(t, env, d)
 	return d
 }
 
-func UnmakeEnvTempDir(t *testing.T, env, dir string) {
+func UnsetEnvTempDir(t *testing.T, env, dir string) {
 	t.Helper()
-	UnmakeEnv(t, env)
+	UnsetEnv(t, env)
 	os.RemoveAll(dir)
 }
