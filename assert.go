@@ -73,10 +73,10 @@ func AssertProtobufEqual(t *testing.T, expected, actual proto.Message) {
 func AssertPrivateKeyEqual(t *testing.T, expected, actual *rsa.PrivateKey) {
 	t.Helper()
 	hash := cryptogo.Hash([]byte("abcdefghijklmnopqrstuvwxyz"))
-	expectedSignature, err := cryptogo.CreateSignature(expected, hash, cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS)
+	expectedSignature, err := cryptogo.CreateSignature(cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS, expected, hash)
 	AssertNoError(t, err)
-	AssertNoError(t, cryptogo.VerifySignature(&actual.PublicKey, hash, expectedSignature, cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS))
-	actualSignature, err := cryptogo.CreateSignature(actual, hash, cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS)
+	AssertNoError(t, cryptogo.VerifySignature(cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS, &actual.PublicKey, hash, expectedSignature))
+	actualSignature, err := cryptogo.CreateSignature(cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS, actual, hash)
 	AssertNoError(t, err)
-	AssertNoError(t, cryptogo.VerifySignature(&expected.PublicKey, hash, actualSignature, cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS))
+	AssertNoError(t, cryptogo.VerifySignature(cryptogo.SignatureAlgorithm_SHA512WITHRSA_PSS, &expected.PublicKey, hash, actualSignature))
 }
